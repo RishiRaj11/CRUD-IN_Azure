@@ -5,9 +5,12 @@ import { getSecret } from "../utils/getSecret.js";
 dotenv.config()
 let Employee=null;
 
-const dbconnect=async(database, username, password)=>{
+const dbconnect=async()=>{
   const dbhos =await getSecret(process.env.DB_HOST);
-    const sequelize = new Sequelize(database, username, password, {
+  const dbname=await getSecret(process.env.DB_NAME);
+  const dbuser=await getSecret(process.env.DB_USER);
+  const dbpassword=await getSecret(process.env.DB_PASSWORD);
+    const sequelize = new Sequelize(dbname, dbuser, dbpassword, {
         host:dbhos,
         dialect:'postgres',
         dialectOptions: {

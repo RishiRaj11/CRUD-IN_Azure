@@ -21,14 +21,18 @@ app.use(express.json());
 // // ✅ Routes should be added after CORS
  app.use("/api", router);
 
- const dbname=await getSecret(process.env.DB_NAME);
- const dbuser=await getSecret(process.env.DB_USER);
- const dbpassword=await getSecret(process.env.DB_PASSWORD);
+ const PORT=process.env.PORT || 5000
 
-dbconnect(dbname, dbuser, dbpassword);
+
 
 // ✅ Correct port (matches fetch URL)
 // console.log("gg",process.env.PORT)
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running at port ${process.env.PORT}`);
 });
+
+try{
+  await dbconnect();
+}catch(e){
+ console.log("Error in db connection",e)
+}
