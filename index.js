@@ -23,7 +23,7 @@ app.use(express.json());
 
  const PORT=process.env.PORT || 5000
 
-
+console.log(PORT)
 
 // ✅ Correct port (matches fetch URL)
 // console.log("gg",process.env.PORT)
