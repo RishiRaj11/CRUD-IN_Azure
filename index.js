@@ -1,12 +1,26 @@
 import express from "express";
 import cors from "cors";
+import passport from "passport";
+import { BearerStrategy } from "passport-azure-ad";
 import dotenv from 'dotenv'
 dotenv.config()
 import { dbconnect } from "./database/dbconnection.js";
  import router from "./routes/route.js";
-import { getSecret } from "./utils/getSecret.js";
+const options = {
+  identityMetadata: `https://login.microsoftonline.com/<TENANT_ID>/.well-known/openid-configuration`,
+  clientID: "<CLIENT_ID>",
+  audience: "<CLIENT_ID>",
+  validateIssuer: true,
+  loggingLevel: "info",
+};
+// passport.use(new BearerStrategy(options, (token, done) => {
+//   return done(null, token);
+// }));
 
 const app = express();
+// app.use(passport.initialize());
+
+
 
 // ✅ Allow frontend origin
 // app.use(cors({

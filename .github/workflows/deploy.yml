@@ -35,3 +35,7 @@ jobs:
         with:
           app-name: ${{ github.ref == 'refs/heads/main' && secrets.AZURE_WEBAPP_NAME_PROD || secrets.AZURE_WEBAPP_NAME_STAGING }}
           package: .
+
+
+
+

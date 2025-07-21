@@ -6,19 +6,19 @@ dotenv.config()
 let Employee=null;
 
 const dbconnect=async()=>{
-  const dbhos =await getSecret(process.env.DB_HOST);
-  const dbname=await getSecret(process.env.DB_NAME);
-  const dbuser=await getSecret(process.env.DB_USER);
-  const dbpassword=await getSecret(process.env.DB_PASSWORD);
-    const sequelize = new Sequelize(dbname, dbuser, dbpassword, {
-        host:dbhos,
+  // const dbhos =await getSecret(process.env.DB_HOST) || localhost;
+  // const dbname=await getSecret(process.env.DB_NAME) || "crud";
+  // const dbuser=await getSecret(process.env.DB_USER) || "root"
+  // const dbpassword=await getSecret(process.env.DB_PASSWORD) || "root";
+    const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+        host:process.env.DB_HOST,
         dialect:'postgres',
-        dialectOptions: {
-          ssl: {
-            require: true,
-            rejectUnauthorized: false, // Important for Azure
-          },
-        },
+        // dialectOptions: {
+        //   ssl: {
+        //     require: true,
+        //     rejectUnauthorized: false, // Important for Azure
+        //   },
+        // },
       });
       try {
         await sequelize.authenticate();

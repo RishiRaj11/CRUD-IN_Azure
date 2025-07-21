@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,11 +15,16 @@
     "@azure/identity": "^4.10.2",
     "@azure/keyvault-secrets": "^4.10.0",
     "@azure/storage-blob": "^12.27.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.2.0",
     "multer": "^2.0.1",
     "nodemon": "^3.1.9",
+    "passport": "^0.7.0",
+    "passport-azure-ad": "^4.3.5",
     "pg": "^8.14.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7"
